@@ -1,245 +1,257 @@
-/* --- 1. RESET & GLOBAL STYLES --- */
+/* --- 1. NEO-DARK VARIABLES --- */
+:root {
+    --primary-orange: #FF5F1F; /* Neon Orange */
+    --ios-dark-bg: #000000; /* Pure Black untuk OLED */
+    --ios-card-bg: #1c1c1e; /* Abu-abu gelap khas iOS Dark Mode */
+    --glass-dark: rgba(28, 28, 30, 0.8);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --accent-blue: #0A84FF;
+    --text-main: #ffffff;
+    --text-secondary: #8e8e93;
+    --card-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
 * {
-    margin: 0; /* Menghilangkan jarak bawaan browser */
-    padding: 0; /* Menghilangkan ruang dalam bawaan browser */
-    box-sizing: border-box; /* Ukuran elemen dihitung termasuk padding & border */
-    font-family: 'Poppins', sans-serif; /* Menggunakan font Poppins yang sudah kamu panggil di HTML */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Poppins', sans-serif;
 }
 
 html {
-    scroll-behavior: smooth; /* Memberikan efek scroll halus saat klik menu navigasi */
+    scroll-behavior: smooth;
 }
 
 body {
-    background-color: #f8fff9; /* Latar belakang hijau sangat muda agar mata nyaman */
-    color: #333; /* Warna teks utama abu-abu gelap agar kontras */
-    line-height: 1.6; /* Memberi jarak antar baris kalimat agar mudah dibaca */
+    background-color: var(--ios-dark-bg);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* --- 2. NAVIGATION BAR --- */
+/* --- 2. DARK NAVIGATION (iOS GLASS) --- */
 header {
-    background-color: #ffffff; /* Warna dasar navigasi putih bersih */
-    padding: 1rem 5%; /* Jarak atas-bawah 1rem, kiri-kanan 5% */
-    position: fixed; /* Navigasi tetap berada di atas saat layar di-scroll */
-    width: 100%; /* Memenuhi lebar layar */
-    top: 0; /* Menempel di paling atas */
-    z-index: 1000; /* Memastikan navigasi berada di lapisan paling depan */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Efek bayangan halus di bawah navbar */
+    background: var(--glass-dark);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    padding: 0.8rem 5%;
+    position: fixed;
+    width: 90%;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    border-radius: 25px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
 }
 
 nav {
-    display: flex; /* Mengaktifkan mode flexbox */
-    justify-content: space-between; /* Memisahkan logo dan menu ke ujung kiri & kanan */
-    align-items: center; /* Menyejajarkan logo dan menu secara vertikal */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
-    font-size: 1.5rem; /* Ukuran teks logo */
-    font-weight: 600; /* Menebalkan teks logo */
-    color: #2d6a4f; /* Warna hijau tua untuk identitas */
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-main);
 }
 
 .logo span {
-    color: #52b788; /* Warna hijau muda untuk aksen nama kelompok */
+    color: var(--primary-orange);
+    text-shadow: 0 0 15px rgba(255, 95, 31, 0.5);
 }
 
 .nav-links {
-    display: flex; /* Menyusun list menu secara menyamping */
-    list-style: none; /* Menghilangkan titik-titik (bullet) pada list */
+    display: flex;
+    list-style: none;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 5px;
+    border-radius: 15px;
 }
 
-.nav-links li {
-    margin-left: 30px; /* Jarak antar menu navigasi */
-}
+.nav-links li { margin: 0 5px; }
 
 .nav-links a {
-    text-decoration: none; /* Menghilangkan garis bawah pada link */
-    color: #333; /* Warna teks menu */
-    font-weight: 400; 
-    transition: 0.3s; /* Durasi animasi saat warna berubah */
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 8px 15px;
+    border-radius: 10px;
+    transition: 0.3s;
 }
 
 .nav-links a:hover {
-    color: #52b788; /* Warna berubah menjadi hijau saat mouse menyentuh menu */
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.1);
 }
 
-/* --- 3. HERO SECTION (BERANDA) --- */
+/* --- 3. FUTURISTIC DARK HERO --- */
 .hero-kelompok {
-    height: 100vh; /* Tinggi satu layar penuh */
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1350&q=80'); /* Gambar background dengan overlay gelap */
-    background-size: cover; /* Gambar menutupi seluruh area section */
-    background-position: center; /* Posisi gambar di tengah */
-    display: flex; /* Mengaktifkan flexbox untuk memposisikan teks */
-    align-items: center; /* Teks di tengah secara vertikal */
-    justify-content: center; /* Teks di tengah secara horizontal */
-    text-align: center; /* Teks rata tengah */
-    color: white; /* Warna teks di bagian hero menjadi putih */
-}
-
-.hero-overlay h1 {
-    font-size: 3.5rem; /* Ukuran judul besar */
-    margin-bottom: 10px;
-}
-
-.btn-cek {
-    display: inline-block;
-    padding: 12px 30px;
-    background-color: #52b788; /* Warna tombol hijau muda */
-    color: white;
-    text-decoration: none;
-    border-radius: 50px; /* Membuat ujung tombol membulat (pill-shaped) */
-    font-weight: 600;
-    transition: 0.3s;
-    margin-top: 20px;
-}
-
-.btn-cek:hover {
-    background-color: #40916c; /* Warna berubah sedikit gelap saat ditekan */
-    transform: translateY(-5px); /* Efek tombol sedikit melompat ke atas */
-}
-
-/* --- 4. SECTION REUSABLE CLASS --- */
-.section-container {
-    padding: 100px 10%; /* Jarak antar section agar tidak terlalu rapat */
-}
-
-.bg-light { background-color: #f1f8f4; } /* Warna hijau pucat untuk selang-seling section */
-.bg-white { background-color: #ffffff; }
-
-.section-title {
-    text-align: center;
-    font-size: 2.2rem;
-    margin-bottom: 50px;
-    color: #2d6a4f;
+    height: 100vh;
+    /* Menggunakan gambar hologram-10-nopember.jpg sebagai background utama */
+    background: 
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
+        url('hologram-10-nopember.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Memberikan efek parallax futuristik */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
 }
 
-/* Membuat garis hiasan di bawah judul */
-.section-title::after {
-    content: '';
-    width: 60px;
-    height: 4px;
-    background: #52b788;
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
+.hero-overlay {
+    animation: fadeInUp 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    text-align: center;
+    padding: 40px;
 }
 
-/* --- 5. ANGGOTA KELOMPOK (GRID SYSTEM) --- */
+.hero-overlay p {
+    color: var(--primary-orange);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.hero-overlay h1 {
+    font-size: 5rem;
+    font-weight: 800;
+    background: linear-gradient(to bottom, #ffffff, #888);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -3px;
+    margin: 10px 0;
+}
+
+.btn-cek {
+    padding: 16px 40px;
+    background: var(--primary-orange);
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: 600;
+    box-shadow: 0 0 20px rgba(255, 95, 31, 0.4);
+    transition: 0.4s;
+    display: inline-block;
+}
+
+.btn-cek:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 35px rgba(255, 95, 31, 0.6);
+}
+
+/* --- 4. SECTION REUSABLE --- */
+.section-container {
+    padding: 120px 10%;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 60px;
+    background: linear-gradient(90deg, #fff, var(--primary-orange));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* --- 5. DARK CARDS --- */
 .kelompok-grid {
-    display: grid; /* Menggunakan CSS Grid untuk tata letak kartu */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Otomatis mengatur jumlah kolom sesuai lebar layar */
-    gap: 25px; /* Jarak antar kartu anggota */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
 }
 
 .kelompok-card {
-    background: white;
-    border-radius: 15px; /* Sudut kartu melengkung */
-    overflow: hidden; /* Memastikan gambar tidak keluar dari sudut lengkung */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* Bayangan lembut agar kartu terlihat timbul */
-    text-align: center;
-    transition: 0.3s;
+    background: var(--ios-card-bg);
+    border-radius: 35px;
+    padding: 12px;
+    text-decoration: none;
+    border: 1px solid var(--glass-border);
+    transition: 0.5s;
 }
 
 .kelompok-card:hover {
-    transform: translateY(-10px); /* Kartu naik saat mouse lewat (hover) */
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    transform: translateY(-10px);
+    border-color: var(--primary-orange);
+    box-shadow: 0 20px 40px rgba(255, 95, 31, 0.1);
 }
 
 .card-img img {
-    width: 100%; /* Lebar gambar mengikuti kartu */
-    height: 250px; /* Tinggi gambar tetap */
-    object-fit: cover; /* Gambar tetap proporsional meskipun dipotong */
+    width: 100%;
+    height: 300px;
+    border-radius: 25px;
+    object-fit: cover;
+    filter: grayscale(20%);
+    transition: 0.5s;
 }
 
-.card-info {
-    padding: 20px;
+.kelompok-card:hover .card-img img {
+    filter: grayscale(0%);
 }
 
-.card-info h3 {
-    color: #2d6a4f;
-    margin-bottom: 5px;
+.card-info { padding: 20px; }
+.card-info h3 { color: white; margin-bottom: 5px; }
+.card-info p { color: var(--text-secondary); }
+
+/* --- 6. DARK CONTENT WRAPPER (RESUME & VIDEO) --- */
+.content-wrapper, .video-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
-/* --- 6. RESUME SEJARAH --- */
-.resume-content {
-    max-width: 800px; /* Membatasi lebar teks laporan agar mudah dibaca */
-    margin: 0 auto; /* Memposisikan laporan di tengah */
-    background: white;
-    padding: 40px;
-    border-radius: 10px;
-    border-left: 5px solid #52b788; /* Garis vertikal hijau sebagai aksen laporan */
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-}
-
-.resume-header {
-    margin-bottom: 25px;
-}
-
-.subtitle {
-    display: block;
-    color: #888;
-    font-style: italic;
-    margin-top: 5px;
-}
-
-.resume-body p {
-    margin-bottom: 20px;
-    text-align: justify; /* Rata kiri-kanan agar rapi seperti buku */
-}
-
-/* --- 7. VIDEO DOKUMENTASI --- */
-.video-wrapper {
-    max-width: 800px;
-    margin: 0 auto;
+.pdf-container, .video-container {
+    width: 100%;
+    max-width: 900px;
+    border-radius: 35px;
+    overflow: hidden;
+    border: 2px solid var(--glass-border);
+    background: #111;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.8);
 }
 
 .video-container {
     position: relative;
-    padding-bottom: 56.25%; /* Rasio aspek video 16:9 */
+    padding-bottom: 56.25%;
     height: 0;
-    overflow: hidden;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
 
 .video-container iframe {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
+    top: 0; left: 0; width: 100%; height: 100%;
 }
 
 .video-desc {
-    margin-top: 20px;
+    margin-top: 30px;
+    color: var(--text-secondary);
     text-align: center;
-    color: #666;
+}
+
+/* --- 7. ANIMATIONS --- */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* --- 8. FOOTER --- */
 footer {
-    background-color: #1b4332; /* Warna hijau sangat gelap */
-    color: white;
     text-align: center;
-    padding: 40px 0;
-    margin-top: 50px;
+    padding: 80px 0;
+    color: var(--text-secondary);
+    border-top: 1px solid var(--glass-border);
+    background: #000;
 }
 
-/* --- 9. RESPONSIVE DESIGN (UNTUK LAYAR HP) --- */
+/* --- 9. MOBILE --- */
 @media (max-width: 768px) {
-    .nav-links {
-        display: none; /* Sembunyikan navigasi di layar kecil (sebaiknya ganti dengan hamburger menu nantinya) */
-    }
-    
-    .hero-overlay h1 {
-        font-size: 2.2rem; /* Kecilkan ukuran judul di layar HP */
-    }
-
-    .section-container {
-        padding: 60px 5%; /* Perkecil padding samping di layar HP */
-    }
-
+    header { width: 95%; }
+    .nav-links { display: none; }
+    .hero-overlay h1 { font-size: 3rem; }
 }
